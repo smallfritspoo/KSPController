@@ -219,7 +219,14 @@ namespace KSPControllerTest
             DisconnectButton = disconnectButton;
 
             ResetButtons();
+
+            UserControl spaceCenterUserControl = new SpaceCenterUserControl();
+            spaceCenterUserControl.AutoScroll = true;
+            viewPortPanel.Controls.Add(spaceCenterUserControl);
+            //form.Show();
         }
+
+        #region Button Clicks
         private void connectButton_Click(object sender, EventArgs e)
         {
             _logger.Trace($"{MethodBase.GetCurrentMethod()} invoked");
@@ -234,6 +241,7 @@ namespace KSPControllerTest
             KSPManager = null;
             ConnectButton.Enabled = true;
         }
+        #endregion
 
         #region Background Workers
         private void ConnectionBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
@@ -618,4 +626,3 @@ namespace KSPControllerTest
         }
         #endregion
     }
-}
